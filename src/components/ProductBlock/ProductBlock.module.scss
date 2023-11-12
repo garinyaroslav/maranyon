@@ -1,0 +1,24 @@
+.root {
+  cursor: pointer;
+  border: 1px solid #cbcbcb;
+  width: 100%;
+  padding: 10px;
+  transition: border 0.2s ease-in-out;
+
+  img {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  p {
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+  span {
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  &:hover {
+    border: 1px solid #4c4c4c;
+  }
+}
