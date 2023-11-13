@@ -11,7 +11,7 @@ export const Windows = () => {
       <div className={styles.categoryTwo}>
         <div className={styles.overlay}></div>
         <img src="/img/2.png" alt="category" />
-        <span>Лампы</span>
+        <span>Люстры</span>
       </div>
       <div className={styles.categoryTree}>
         <div className={styles.overlay}></div>

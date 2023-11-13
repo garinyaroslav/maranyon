@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { Windows, ProductBlock } from '../../components';
 
 import styles from './Home.module.scss';
@@ -26,12 +28,15 @@ export const Home = () => {
             Вся продукция Maranyon изготавливается по стандартным размерам, поэтому вы можете
             свободно комбинировать их.
           </p>
-          <button>Начать покупки</button>
+          <Link to="categories">
+            <button>Начать покупки</button>
+          </Link>
         </div>
         <div className={styles.imageSide}>
           <img src="/img/bannerImage1.png" alt="banner" />
         </div>
       </div>
+      <div className={styles.slyder}></div>
     </div>
   );
 };
