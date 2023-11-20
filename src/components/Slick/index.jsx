@@ -1,5 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { ProductBlock } from '../ProductBlock';
 
@@ -8,6 +9,7 @@ import './slick.scss';
 import './slick-theme.scss';
 
 export const Slick = () => {
+  const { items } = useSelector((state) => state.product);
   const [hasSetPosition, setHasSetPosition] = React.useState(false);
   const slider = React.useRef(null);
   const initialSlidePosition = 1;
@@ -29,15 +31,14 @@ export const Slick = () => {
     pauseOnHover: true,
   };
 
+  const products = Object.assign([], items).splice(9, 18);
+
   return (
     <div className={styles.root}>
       <Slider ref={slider} className={styles.slider} {...settings}>
-        <ProductBlock />
-        <ProductBlock />
-        <ProductBlock />
-        <ProductBlock />
-        <ProductBlock />
-        <ProductBlock />
+        {products.map((obj) => (
+          <ProductBlock key={obj.id} image={obj.imageUrls[0]} title={obj.title} price={obj.price} />
+        ))}
       </Slider>
     </div>
   );

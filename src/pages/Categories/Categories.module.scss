@@ -1,2 +1,40 @@
 .root {
+  .categories {
+    margin: 130px auto;
+    width: 1100px;
+
+    h2 {
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 30px;
+      font-weight: 600;
+      margin-bottom: 50px;
+    }
+    .tags {
+      user-select: none;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+
+      span {
+        padding: 5px 10px;
+        font-size: 18px;
+        border: 1px solid #cbcbcb;
+        transition: border 0.2s ease-in-out;
+        cursor: pointer;
+        margin-right: 10px;
+        margin-bottom: 70px;
+
+        &:hover {
+          border: 1px solid #4c4c4c;
+        }
+      }
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-column-gap: 15px;
+      grid-row-gap: 15px;
+    }
+  }
 }

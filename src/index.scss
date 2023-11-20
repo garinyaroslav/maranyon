@@ -6,6 +6,21 @@
   font-family: 'Fira Sans', sans-serif;
   box-sizing: border-box;
   scroll-behavior: smooth;
+
+  //scroll bar styles
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: #50a060;
+  }
+
+  ::-webkit-scrollbar-track {
+    visibility: hidden;
+    background-color: #fff;
+  }
 }
 
 html {
