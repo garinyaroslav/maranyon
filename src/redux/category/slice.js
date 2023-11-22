@@ -3,13 +3,18 @@ import { fetchProdByCategory } from './asyncActions';
 
 const initialState = {
   products: [],
+  categoryName: 'Все',
   status: 'loading',
 };
 
 const categorySlice = createSlice({
   name: 'category',
   initialState,
-  reducers: {},
+  reducers: {
+    setProductName: (state, action) => {
+      state.categoryName = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchProdByCategory.pending, (state) => {
       state.products = [];
@@ -26,4 +31,5 @@ const categorySlice = createSlice({
   },
 });
 
+export const { setProductName } = categorySlice.actions;
 export default categorySlice.reducer;

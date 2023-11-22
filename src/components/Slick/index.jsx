@@ -1,6 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { ProductBlock } from '../ProductBlock';
 
@@ -22,22 +22,27 @@ export const Slick = () => {
   }, [initialSlidePosition, hasSetPosition, slider]);
 
   const settings = {
-    infinite: true,
-    slidesToShow: 4,
-    slidesToScroll: 1,
     initialSlide: 1,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    pauseOnHover: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 6,
+    slidesToScroll: 2,
   };
 
-  const products = Object.assign([], items).splice(9, 18);
+  const products = Object.assign([], items);
 
   return (
     <div className={styles.root}>
+      <h1>Сейчас в тренде</h1>
       <Slider ref={slider} className={styles.slider} {...settings}>
-        {products.map((obj) => (
-          <ProductBlock key={obj.id} image={obj.imageUrls[0]} title={obj.title} price={obj.price} />
+        {products.map((obj, i) => (
+          <ProductBlock
+            key={i}
+            id={obj.id}
+            image={obj.imageUrls[0]}
+            title={obj.title}
+            price={obj.price}
+          />
         ))}
       </Slider>
     </div>

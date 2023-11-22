@@ -11,28 +11,28 @@ export const Windows = () => {
         <Link to="categories">
           <div onClick={scrollUp} className={styles.overlay}></div>
         </Link>
-        <img src="/img/1.png" alt="category" />
+        <img src="/img/1.webp" alt="category" />
         <span>Жить с комфортом</span>
       </div>
       <div className={styles.categoryTwo}>
         <Link to="categories">
           <div onClick={scrollUp} className={styles.overlay}></div>
         </Link>
-        <img src="/img/2.png" alt="category" />
+        <img src="/img/2.webp" alt="category" />
         <span>Люстры</span>
       </div>
       <div className={styles.categoryTree}>
         <Link to="categories">
           <div onClick={scrollUp} className={styles.overlay}></div>
         </Link>
-        <img src="/img/3.png" alt="category" />
+        <img src="/img/3.webp" alt="category" />
         <span>Всё для кухни</span>
       </div>
       <div className={styles.categoryFour}>
         <Link to="categories">
           <div onClick={scrollUp} className={styles.overlay}></div>
         </Link>
-        <img src="/img/4.png" alt="category" />
+        <img src="/img/4.webp" alt="category" />
         <span>Электроника</span>
       </div>
     </div>

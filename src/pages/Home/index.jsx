@@ -21,8 +21,14 @@ export const Home = () => {
   const products = Object.assign([], items).splice(0, 8);
 
   const skeletons = [...new Array(8)].map((_, i) => <Skeleton key={i} />);
-  const prodItems = products.map((obj) => (
-    <ProductBlock key={obj.id} image={obj.imageUrls[0]} title={obj.title} price={obj.price} />
+  const prodItems = products.map((obj, i) => (
+    <ProductBlock
+      key={i}
+      id={obj.id}
+      image={obj.imageUrls[0]}
+      title={obj.title}
+      price={obj.price}
+    />
   ));
 
   return (
@@ -30,7 +36,7 @@ export const Home = () => {
       <Windows />
       <div className={styles.proud}>
         <h2>Продукция, которой мы гордимся</h2>
-        <div className={styles.gridContainer}>{status === 'loading' ? skeletons : prodItems}</div>
+        <div className={styles.gridContainer}>{status !== 'success' ? skeletons : prodItems}</div>
       </div>
       <div className={styles.banner}>
         <div className={styles.textSide}>
@@ -44,16 +50,15 @@ export const Home = () => {
           </Link>
         </div>
         <div className={styles.imageSide}>
-          <img src="/img/bannerImage1.png" alt="banner" />
+          <img src="/img/bannerImage1.webp" alt="banner" />
         </div>
       </div>
       <div className={styles.slyder}>
-        <h1>Сейчас в тренде</h1>
         <Slick />
       </div>
       <div className={styles.bannerRight}>
         <div className={styles.imageSide}>
-          <img src="/img/bannerImage2.png" alt="banner" />
+          <img src="/img/bannerImage2.webp" alt="banner" />
         </div>
         <div className={styles.textSide}>
           <h2>Комфортная и элегантная жизнь</h2>
