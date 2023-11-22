@@ -7,12 +7,44 @@
   .productBlock {
     margin-bottom: 80px;
     border: 1px solid blue;
+    display: flex;
 
     .imgSide {
+      padding: 30px;
       width: 50%;
+      height: 100%;
+
+      .imgContainer {
+        height: 400px;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+
+        img {
+          height: 100%;
+        }
+      }
+      .selector {
+        display: flex;
+        justify-content: center;
+
+        img {
+          height: auto;
+          width: 100px;
+          margin-right: 20px;
+          border: 1px solid #fff;
+          transition: all 0.15s ease-in-out;
+
+          &:hover {
+            box-shadow: 0 0 4px 2px #d6d6d6;
+            border: 1px solid #bcbcbc;
+          }
+        }
+      }
     }
     .textSide {
       width: 50%;
+      height: 100%;
       background-color: #e5e5e5;
       padding: 5% 4%;
       display: flex;
@@ -21,12 +53,14 @@
       p {
         font-weight: 400;
         font-size: 18px;
-        margin-bottom: 20px;
+        margin-top: 20px;
+        margin-bottom: 30px;
       }
       .price {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 40px;
 
         span {
           font-weight: 600;
@@ -74,6 +108,39 @@
         }
       }
       .buttons {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        div {
+          width: 45%;
+          height: 45px;
+          text-align: center;
+          padding: 10px;
+          font-size: 18px;
+          font-weight: 500;
+          transition: all 0.15s ease-in-out;
+          cursor: pointer;
+        }
+
+        .cart {
+          border: 1px solid #000;
+
+          &:hover {
+            color: #fff;
+            background-color: #000;
+          }
+        }
+        .bay {
+          color: #fff;
+          border: 1px solid #50a060;
+          background-color: #50a060;
+
+          &:hover {
+            color: #50a060;
+            background: 0;
+          }
+        }
       }
     }
   }

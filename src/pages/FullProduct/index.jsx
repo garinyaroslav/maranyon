@@ -13,7 +13,28 @@ export const FullProduct = () => {
   return (
     <div className={styles.root}>
       <div className={styles.productBlock}>
-        <div className={styles.imgSide}></div>
+        <div className={styles.imgSide}>
+          <div className={styles.imgContainer}>
+            <img
+              src="https://cdn.leroymerlin.ru/lmru/image/upload/v1690792609/b_white,c_pad,d_photoiscoming.png,f_auto,h_2000,q_auto,w_2000/lmcode/zDmWnDfYFkeZV09qEaUvYQ/18596885.png"
+              alt="productphoto"
+            />
+          </div>
+          <div className={styles.selector}>
+            <img
+              src="https://cdn.leroymerlin.ru/lmru/image/upload/v1690792609/b_white,c_pad,d_photoiscoming.png,f_auto,h_2000,q_auto,w_2000/lmcode/zDmWnDfYFkeZV09qEaUvYQ/18596885.png"
+              alt="porductminiphoto"
+            />
+            <img
+              src="https://cdn.leroymerlin.ru/lmru/image/upload/v1690792609/b_white,c_pad,d_photoiscoming.png,f_auto,h_2000,q_auto,w_2000/lmcode/aMbmhkzAcECu92idc9G9Mw/18596885_01.png"
+              alt="porductminiphoto"
+            />
+            <img
+              src="https://cdn.leroymerlin.ru/lmru/image/upload/v1690792609/b_white,c_pad,d_photoiscoming.png,f_auto,h_2000,q_auto,w_2000/lmcode/gE0M9sO1t0Gjn7ZXRTsOnw/18596885_07.png"
+              alt="porductminiphoto"
+            />
+          </div>
+        </div>
         <div className={styles.textSide}>
           <p>
             Банкетка Альберо выполнена из массива древесины. Оборудована двумя полочками для обуви,
