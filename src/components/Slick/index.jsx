@@ -29,13 +29,11 @@ export const Slick = () => {
     slidesToScroll: 2,
   };
 
-  const products = Object.assign([], items);
-
   return (
     <div className={styles.root}>
       <h1>Сейчас в тренде</h1>
       <Slider ref={slider} className={styles.slider} {...settings}>
-        {products.map((obj, i) => (
+        {items.map((obj, i) => (
           <ProductBlock
             key={i}
             id={obj.id}

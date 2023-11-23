@@ -1,56 +1,71 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
+import { itemCountAdd, itemCountPut } from '../../redux/product/slice';
+import { fetchProducts, fetchProduct } from '../../redux/product/asyncActions';
 import { scrollUp } from '../../utils/scrollUp';
 import { Slick } from '../../components';
 
 import styles from './FullProduct.module.scss';
 
 export const FullProduct = () => {
+  const [image, setImage] = React.useState(0);
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const { status, item, itemStatus, itemCount } = useSelector((state) => state.product);
+
+  React.useEffect(() => {
+    dispatch(fetchProduct(id));
+  }, []);
+
   React.useEffect(() => {
     scrollUp();
+    if (status === 'loading') {
+      dispatch(fetchProducts());
+    }
   }, []);
 
   return (
     <div className={styles.root}>
       <div className={styles.productBlock}>
+        <h1 className={styles.title}>{item.title}</h1>
         <div className={styles.imgSide}>
           <div className={styles.imgContainer}>
-            <img
-              src="https://cdn.leroymerlin.ru/lmru/image/upload/v1690792609/b_white,c_pad,d_photoiscoming.png,f_auto,h_2000,q_auto,w_2000/lmcode/zDmWnDfYFkeZV09qEaUvYQ/18596885.png"
-              alt="productphoto"
-            />
+            <img src={itemStatus === 'success' ? item.imageUrls[image] : ''} alt="productphoto" />
           </div>
           <div className={styles.selector}>
             <img
-              src="https://cdn.leroymerlin.ru/lmru/image/upload/v1690792609/b_white,c_pad,d_photoiscoming.png,f_auto,h_2000,q_auto,w_2000/lmcode/zDmWnDfYFkeZV09qEaUvYQ/18596885.png"
+              onMouseOver={() => setImage(0)}
+              src={itemStatus === 'success' ? item.imageUrls[0] : ''}
               alt="porductminiphoto"
             />
             <img
-              src="https://cdn.leroymerlin.ru/lmru/image/upload/v1690792609/b_white,c_pad,d_photoiscoming.png,f_auto,h_2000,q_auto,w_2000/lmcode/aMbmhkzAcECu92idc9G9Mw/18596885_01.png"
+              onMouseOver={() => setImage(1)}
+              src={itemStatus === 'success' ? item.imageUrls[1] : ''}
               alt="porductminiphoto"
             />
             <img
-              src="https://cdn.leroymerlin.ru/lmru/image/upload/v1690792609/b_white,c_pad,d_photoiscoming.png,f_auto,h_2000,q_auto,w_2000/lmcode/gE0M9sO1t0Gjn7ZXRTsOnw/18596885_07.png"
+              onMouseOver={() => setImage(2)}
+              src={itemStatus === 'success' ? item.imageUrls[2] : ''}
               alt="porductminiphoto"
             />
           </div>
         </div>
         <div className={styles.textSide}>
-          <p>
-            Банкетка Альберо выполнена из массива древесины. Оборудована двумя полочками для обуви,
-            и третьей, предназначенной для удобства обувания. Подходит для размещения в прихожей.
-            Благодаря лаконичному дизайну и нейтральному белому цвету хорошо впишется в современные
-            интерьеры. Простая конструкция обеспечивает легкий уход. Поверхность очищается от
-            загрязнений и пыли при помощи влажной ветоши.
-          </p>
+          <p>{item.description}</p>
           <div className={styles.price}>
             <span>Колличество</span>
             <div className={styles.quantity}>
-              <div className={styles.plus}>-</div>
-              <div className={styles.count}>1</div>
-              <div className={styles.minus}>+</div>
+              <div onClick={() => dispatch(itemCountPut())} className={styles.plus}>
+                -
+              </div>
+              <div className={styles.count}>{itemCount}</div>
+              <div onClick={() => dispatch(itemCountAdd())} className={styles.minus}>
+                +
+              </div>
             </div>
-            <span>3499₽</span>
+            <span>{item.price * itemCount}₽</span>
           </div>
           <div className={styles.buttons}>
             <div className={styles.cart}>В корзину</div>
@@ -58,7 +73,20 @@ export const FullProduct = () => {
           </div>
         </div>
       </div>
-      <div className={styles.about}></div>
+      <div className={styles.about}>
+        <div>
+          <h3>Цвет:</h3>
+          <p>{item.color}</p>
+        </div>
+        <div>
+          <h3>Вес:</h3>
+          <p>{item.weight} кг</p>
+        </div>
+        <div>
+          <h3>Размеры:</h3>
+          <p>{item.size} см</p>
+        </div>
+      </div>
       <Slick />
     </div>
   );
