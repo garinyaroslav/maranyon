@@ -1,7 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 
+import { addItem } from '../../redux/cart/slice';
 import { itemCountAdd, itemCountPut } from '../../redux/product/slice';
 import { fetchProducts, fetchProduct } from '../../redux/product/asyncActions';
 import { scrollUp } from '../../utils/scrollUp';
@@ -10,9 +12,10 @@ import { Slick } from '../../components';
 import styles from './FullProduct.module.scss';
 
 export const FullProduct = () => {
-  const [image, setImage] = React.useState(0);
-  const { id } = useParams();
   const dispatch = useDispatch();
+  const { id } = useParams();
+  const [showPopup, setShowPopup] = React.useState(true);
+  const [image, setImage] = React.useState(0);
   const { status, item, itemStatus, itemCount } = useSelector((state) => state.product);
 
   React.useEffect(() => {
@@ -26,8 +29,15 @@ export const FullProduct = () => {
     }
   }, []);
 
+  const addToCart = () => {
+    dispatch(addItem(item));
+  };
+
   return (
     <div className={styles.root}>
+      {/* <CSSTransition in={showPopup} timeout={500} classNames="alert" unmountOnExit>
+        <div className={styles.popup}>Your token has been copied!</div>
+      </CSSTransition> */}
       <div className={styles.productBlock}>
         <h1 className={styles.title}>{item.title}</h1>
         <div className={styles.imgSide}>
@@ -68,7 +78,9 @@ export const FullProduct = () => {
             <span>{item.price * itemCount}₽</span>
           </div>
           <div className={styles.buttons}>
-            <div className={styles.cart}>В корзину</div>
+            <div onClick={addToCart} className={styles.cart}>
+              В корзину
+            </div>
             <div className={styles.bay}>Купить сейчас</div>
           </div>
         </div>

@@ -1,14 +1,61 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { countPrice, setIsOpen } from '../../redux/cart/slice';
+import { CartItem } from '../CartItem';
 
 import styles from './Drawer.module.scss';
 
 export const Drawer = () => {
-  const { isOpen } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  const { isOpen, items, totalPrice } = useSelector((state) => state.cart);
+
+  React.useEffect(() => {
+    dispatch(countPrice());
+  }, [items]);
 
   return (
     <div className={`${styles.overlay} ${isOpen ? styles.overlayVisible : ''}`}>
-      <div className={styles.drawer}></div>
+      <div onClick={() => dispatch(setIsOpen())} className={styles.clickArea}></div>
+      <div className={styles.drawer}>
+        <div className={styles.content}>
+          <div className={styles.title}>
+            <span>Ваша корзина</span>
+            <img
+              onClick={() => dispatch(setIsOpen())}
+              className={styles.closeImg}
+              src="/img/close.svg"
+              alt="close"
+            />
+          </div>
+          {totalPrice !== 0 ? (
+            <>
+              <div className={styles.items}>
+                {items.map((obj) => (
+                  <CartItem
+                    key={obj.id}
+                    id={obj.id}
+                    imgUrl={obj.imageUrls[0]}
+                    title={obj.title}
+                    price={obj.price}
+                    count={obj.count}
+                  />
+                ))}
+              </div>
+              <div className={styles.totalCoast}>
+                <div className={styles.info}>
+                  <p>Всего к оплате:</p>
+                  <span>{totalPrice}₽</span>
+                </div>
+                <div className={styles.subBut}>Оплатить</div>
+              </div>
+            </>
+          ) : (
+            <img className={styles.cartImg} src="/img/cartEmpty.webp" alt="cartempty" />
+          )}
+          {/* <img className={styles.cartImg} src="/img/cartEmpty.webp" alt="cartempty" /> */}
+        </div>
+      </div>
     </div>
   );
 };

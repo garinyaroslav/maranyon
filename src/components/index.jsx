@@ -4,3 +4,4 @@ export * from './Windows';
 export * from './ProductBlock';
 export * from './Slick';
 export * from './Drawer';
+export * from './CartItem';

@@ -60,3 +60,20 @@ h2 {
 a {
   text-decoration: none;
 }
+
+// Плавное появление popup через react-transition-group
+
+.alert-enter {
+  opacity: 0;
+}
+.alert-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.alert-exit {
+  opacity: 1;
+}
+.alert-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
