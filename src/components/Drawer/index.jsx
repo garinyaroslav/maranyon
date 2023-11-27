@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { countPrice, setIsOpen } from '../../redux/cart/slice';
+import { countPrice, setIsOpen, setItems } from '../../redux/cart/slice';
 import { CartItem } from '../CartItem';
 
 import styles from './Drawer.module.scss';
@@ -11,7 +11,12 @@ export const Drawer = () => {
   const { isOpen, items, totalPrice } = useSelector((state) => state.cart);
 
   React.useEffect(() => {
+    dispatch(setItems(JSON.parse(localStorage.getItem('items'))));
+  }, []);
+
+  React.useEffect(() => {
     dispatch(countPrice());
+    localStorage.setItem('items', JSON.stringify(items));
   }, [items]);
 
   return (
