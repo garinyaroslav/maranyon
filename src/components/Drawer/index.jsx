@@ -15,8 +15,8 @@ export const Drawer = () => {
   }, []);
 
   React.useEffect(() => {
-    dispatch(countPrice());
     localStorage.setItem('items', JSON.stringify(items));
+    dispatch(countPrice());
   }, [items]);
 
   return (
