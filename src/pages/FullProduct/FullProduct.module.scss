@@ -180,19 +180,24 @@
   }
 
   .popup {
+    user-select: none;
     z-index: 1000;
     position: fixed;
-    background-color: #fff;
+    background-color: #393939;
     text-align: center;
     font-size: 16px;
-    font-weight: 700;
-    border-radius: 8px;
-    padding: 10px 0;
-    width: 280px;
+    font-weight: 400;
+    border-radius: 3px;
+    padding: 10px 30px;
+    width: 300px;
     height: 40px;
-    color: #000;
-    margin-top: 700px;
-    margin-left: calc(50%);
-    border: 2px solid rgb(86, 86, 86);
+    color: #fff;
+    display: flex;
+    top: 70%;
+    left: calc(50% - 150px);
+
+    img {
+      width: 40px;
+    }
   }
 }

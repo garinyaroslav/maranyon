@@ -14,7 +14,7 @@ import styles from './FullProduct.module.scss';
 export const FullProduct = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const [showPopup, setShowPopup] = React.useState(true);
+  const [showPopup, setShowPopup] = React.useState(false);
   const [image, setImage] = React.useState(0);
   const { status, item, itemStatus, itemCount } = useSelector((state) => state.product);
 
@@ -30,14 +30,21 @@ export const FullProduct = () => {
   }, []);
 
   const addToCart = () => {
-    dispatch(addItem(item));
+    dispatch(addItem({ item, itemCount }));
+    setShowPopup(true);
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 1500);
   };
 
   return (
     <div className={styles.root}>
-      {/* <CSSTransition in={showPopup} timeout={500} classNames="alert" unmountOnExit>
-        <div className={styles.popup}>Your token has been copied!</div>
-      </CSSTransition> */}
+      <CSSTransition in={showPopup} timeout={500} classNames="alert" unmountOnExit>
+        <div className={styles.popup}>
+          Товар добавлен в корзину
+          <img src="/img/mark.svg" alt="mark" />
+        </div>
+      </CSSTransition>
       <div className={styles.productBlock}>
         <h1 className={styles.title}>{item.title}</h1>
         <div className={styles.imgSide}>

@@ -43,7 +43,6 @@ export const Drawer = () => {
                     imgUrl={obj.imageUrls[0]}
                     title={obj.title}
                     price={obj.price}
-                    count={obj.count}
                   />
                 ))}
               </div>
@@ -58,7 +57,6 @@ export const Drawer = () => {
           ) : (
             <img className={styles.cartImg} src="/img/cartEmpty.webp" alt="cartempty" />
           )}
-          {/* <img className={styles.cartImg} src="/img/cartEmpty.webp" alt="cartempty" /> */}
         </div>
       </div>
     </div>

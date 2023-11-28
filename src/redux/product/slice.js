@@ -18,8 +18,7 @@ const productSlice = createSlice({
       state.itemCount++;
     },
     itemCountPut: (state) => {
-      const count = state.itemCount;
-      if (count !== 1) state.itemCount--;
+      if (state.itemCount !== 1) state.itemCount--;
     },
   },
   extraReducers: (builder) => {
@@ -41,6 +40,7 @@ const productSlice = createSlice({
     });
     builder.addCase(fetchProduct.fulfilled, (state, action) => {
       state.item = action.payload;
+      state.itemCount = 1;
       state.itemStatus = 'success';
     });
     builder.addCase(fetchProduct.rejected, (state) => {

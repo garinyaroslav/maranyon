@@ -1,11 +1,13 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { removeItem } from '../../redux/cart/slice';
+import { removeItem, plusItem, minusItem } from '../../redux/cart/slice';
 
 import styles from './CartItem.module.scss';
 
-export const CartItem = ({ id, imgUrl, title, price, count }) => {
+export const CartItem = ({ id, imgUrl, title, price }) => {
   const dispatch = useDispatch();
+  const { items } = useSelector((state) => state.cart);
+  const item = items.find((item) => item.id === id);
 
   return (
     <div className={styles.root}>
@@ -22,9 +24,13 @@ export const CartItem = ({ id, imgUrl, title, price, count }) => {
         </div>
         <span className={styles.price}>{price}₽</span>
         <div className={styles.quantity}>
-          <div className={styles.minus}>-</div>
-          <div className={styles.count}>{count}</div>
-          <div className={styles.plus}>+</div>
+          <div onClick={() => dispatch(minusItem(id))} className={styles.minus}>
+            -
+          </div>
+          <div className={styles.count}>{item.count}</div>
+          <div onClick={() => dispatch(plusItem(id))} className={styles.plus}>
+            +
+          </div>
         </div>
       </div>
     </div>
