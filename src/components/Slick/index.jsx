@@ -27,6 +27,15 @@ export const Slick = () => {
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 2,
+    responsive: [
+      {
+        breakpoint: 450,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2,
+        },
+      },
+    ],
   };
 
   return (

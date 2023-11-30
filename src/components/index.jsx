@@ -5,3 +5,4 @@ export * from './ProductBlock';
 export * from './Slick';
 export * from './Drawer';
 export * from './CartItem';
+export * from './PhoneMenu';

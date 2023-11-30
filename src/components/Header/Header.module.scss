@@ -11,12 +11,13 @@
   align-items: center;
 
   .container {
+    position: relative;
     width: 1100px;
     display: flex;
     justify-content: space-between;
     user-select: none;
 
-    img {
+    .logo {
       cursor: pointer;
       height: 35px;
       transition: all 0.05s ease-in-out;
@@ -26,7 +27,8 @@
       }
     }
 
-    ul {
+    .buttons {
+      visibility: visible;
       display: flex;
       align-items: center;
 
@@ -64,6 +66,32 @@
         &:active:after {
           width: 40%;
         }
+      }
+    }
+
+    .menu {
+      cursor: pointer;
+      height: 30px;
+      position: absolute;
+      right: 0;
+      visibility: hidden;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .container {
+      width: 95vw;
+
+      .menu {
+        visibility: visible;
+      }
+
+      .logo {
+        height: 26px;
+      }
+
+      .buttons {
+        visibility: hidden;
       }
     }
   }

@@ -16,6 +16,7 @@
 //     url('./fonts/slick.svg#slick') format('svg');
 // }
 /* Arrows */
+
 .slick-prev,
 .slick-next {
   font-size: 0;
@@ -41,6 +42,7 @@
   background: #373737;
   transition: background-color 0.15s ease-in-out;
 }
+
 .slick-prev:hover,
 .slick-next:hover {
   color: transparent;
@@ -98,6 +100,27 @@
 }
 [dir='rtl'] .slick-next:before {
   content: '←';
+}
+
+@media (max-width: 900px) {
+  .slick-prev,
+  .slick-next {
+    width: 25px;
+    height: 25px;
+  }
+  .slick-prev:before,
+  .slick-next:before {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  .slick-prev {
+    right: 35px;
+    top: -30px;
+  }
+  .slick-next {
+    right: 0;
+    top: -30px;
+  }
 }
 
 /* Dots */

@@ -21,6 +21,13 @@
     visibility: hidden;
     background-color: #fff;
   }
+
+  @media (max-width: 900px) {
+    user-select: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }
 
 html {
