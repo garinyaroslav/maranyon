@@ -22,6 +22,11 @@ export const PhoneMenu = ({ menu, setMenu }) => {
             Каталог
           </span>
         </Link>
+        <Link to="/categories">
+          <span onClick={() => setMenu(false)} className={styles.paragraph}>
+            Лампы
+          </span>
+        </Link>
         <span onClick={onClickCart} className={styles.paragraph}>
           Корзина
         </span>
