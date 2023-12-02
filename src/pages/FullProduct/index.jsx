@@ -14,7 +14,7 @@ import styles from './FullProduct.module.scss';
 export const FullProduct = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const [showPopup, setShowPopup] = React.useState(false);
+  const [showPopup, setShowPopup] = React.useState(true);
   const [image, setImage] = React.useState(0);
   const { status, item, itemStatus, itemCount } = useSelector((state) => state.product);
 
@@ -40,10 +40,7 @@ export const FullProduct = () => {
   return (
     <div className={styles.root}>
       <CSSTransition in={showPopup} timeout={500} classNames="alert" unmountOnExit>
-        <div className={styles.popup}>
-          Товар добавлен в корзину
-          <img src="/img/mark.svg" alt="mark" />
-        </div>
+        <div className={styles.popup}>Товар добавлен в корзину✅</div>
       </CSSTransition>
       <div className={styles.productBlock}>
         <h1 className={styles.title}>{item.title}</h1>

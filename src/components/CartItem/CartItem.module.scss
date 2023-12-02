@@ -6,7 +6,7 @@
   margin-bottom: 10px;
 
   img {
-    height: 118px;
+    height: 100%;
   }
   .info {
     height: 100%;
@@ -75,6 +75,39 @@
 
         &:hover {
           background-color: #e5e5e5;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    height: 110px;
+    .info {
+      padding: 5px 8px;
+
+      .title {
+        height: auto;
+
+        span {
+          width: auto;
+          font-size: 15px;
+          font-weight: 400;
+        }
+
+        .closeImg {
+          width: 15px;
+        }
+      }
+
+      .quantity {
+        height: 30px;
+
+        div {
+          line-height: 30px;
+        }
+        .count {
+          padding: 0;
+          font-size: 20px;
         }
       }
     }
