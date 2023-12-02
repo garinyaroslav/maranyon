@@ -14,7 +14,7 @@ import styles from './FullProduct.module.scss';
 export const FullProduct = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const [showPopup, setShowPopup] = React.useState(true);
+  const [showPopup, setShowPopup] = React.useState(false);
   const [image, setImage] = React.useState(0);
   const { status, item, itemStatus, itemCount } = useSelector((state) => state.product);
 
